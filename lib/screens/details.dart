@@ -67,7 +67,7 @@ class _DetailsPageState extends State<DetailsPage> with SingleTickerProviderStat
     }
 
     bool hasAddon(Map data) {
-      return data['add_on_details'] != null && data['add_on_details'] != 'null';
+      return data['add_on_details'] != null && data['add_on_details'] != 'null' && data['add_on_details'] != '[]';
     }
 
     bool isNoCC(Map data) {
