@@ -67,7 +67,7 @@ class _StatisticsState extends State<Statistics> with SingleTickerProviderStateM
 
   @override
   void initState() {
-    _tabController = TabController(vsync: this, length: 4);
+    _tabController = TabController(vsync: this, length: 3);
 
     writeData();
     widget.storage.readData().then((String value) {
