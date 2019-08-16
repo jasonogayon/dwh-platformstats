@@ -182,8 +182,8 @@ class SquareTileState extends State<SquareTile> {
               data['add_on_details'].split('"description":"')[i].split('"')[0],
               normalFont(10.0), EdgeInsets.only(top: 4.0, bottom: 8.0)
             ));
-            content.add(generateCopy('Add-on Quantity:', data['add_on_details'].split('"quantity":')[i].split(',')[0]));
-            content.add(generateCopy('Add-on Rate:', '$currency ${data['add_on_details'].split('"total_rate":')[i].split(',')[0]}'));
+            content.add(generateCopy('Add-on Quantity:', data['add_on_details'].split('"quantity":')[i].split(',')[0].split(':')[1].split('}')[0]));
+            content.add(generateCopy('Add-on Rate:', currency + ' ' + data['add_on_details'].split('"value":')[i].replaceAll('"','').split(',')[0].split(':')[1].split('}')[0]));
           }
         }
       }
@@ -213,7 +213,7 @@ class SquareTileState extends State<SquareTile> {
           ]
         ),
       ),
-      onTap: data == null || (widget.description.toLowerCase().contains('voucher') && data['total'] == 0)
+      onTap: data == null || (widget.description.toLowerCase().contains('voucher') && data['total'] == 0) || (widget.description.toLowerCase().contains('rewards') && data['data'].length == 0)
         ? null
         : () {
           showDialog(
